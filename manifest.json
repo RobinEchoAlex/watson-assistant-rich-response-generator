@@ -1,0 +1,6 @@
+{
+  "name": "Watson Assistant Additional Output",
+  "description": "Easy and visualised way to add other output formats to your assistant's response",
+  "version": "0.1",
+  "manifest_version": 3
+}
