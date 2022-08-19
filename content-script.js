@@ -144,10 +144,11 @@ function copyToClipboard(jsonStr) {
   navigator.clipboard.write(data).then(function () {
     console.log("Pasted to clipboard successfully.");
     Swal.fire({
-      title: 'Error!',
-      text: 'Do you want to continue',
-      icon: 'error',
-      confirmButtonText: 'Cool'
+      position: 'bottom-start',
+      icon: 'success',
+      title: 'The content has been copied',
+      showConfirmButton: false,
+      timer: 1145
     })
   }, function () {
     console.error("Fail pasting to clipboard.");
