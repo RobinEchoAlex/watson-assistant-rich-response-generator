@@ -51,12 +51,19 @@ function formFactory() {
           <label for="url"><b>URL</b></label>
           <input id="urlInput" type="url" placeholder="https://example.com/image.jpg" name="url" required>
           
-          
-          <button type="submit" class="btn">Copy to clipboard</button>
-          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+     
+          <button id="submitImageForm" type="button" class="btn">Copy to clipboard</button>
+          <button id="closeImageForm" type="button" class="btn cancel">Close</button>
         </form>
       </div>`
   document.getElementsByClassName("RichTextEditorToolbar")[0].appendChild(popup)
+  document.getElementById("submitImageForm").onclick = function (){
+    assembleImageResponse()
+  }
+
+  document.getElementById("closeImageForm").onclick = function (){
+    closeForm()
+  }
 }
 
 function buttonCreator(id) {
@@ -100,3 +107,8 @@ function addStyleSheet() {
 
   head.appendChild(cssLinkElem);
 }
+
+function assembleImageResponse(){
+  alert("v")
+}
+
