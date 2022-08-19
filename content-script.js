@@ -20,30 +20,35 @@ function main() {
 }
 
 function openForm() {
-  document.getElementById("myForm").style.display = "block";
+  if(document.getElementById("imageForm")==null){
+    formFactory()
+  }
+  document.getElementById("imageForm").style.display = "block";
 }
 
 function closeForm() {
-  document.getElementById("myForm").style.display = "none";
+  document.getElementById("imageForm").style.display = "none";
 }
 
 function formFactory() {
-  if (document.getElementById("myForm")){
+  if (document.getElementById("imageForm")){
     return
   }
 
   const popup = document.createElement("div")
-  popup.innerHTML = `<div class="form-popup" id="myForm" style="display: none">
+  popup.innerHTML = `<div class="form-popup" id="imageForm" style="display: none">
         <form action="/action_page.php" class="form-container">
-          <h1>Login</h1>
+          <h1>Add image</h1>
       
-          <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" required>
+          <label for="title"><b>Title</b></label>
+          <input type="text" placeholder="Image Title" name="title" required>
       
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
+          <label for="description"><b>Description</b></label>
+          <input type="text" placeholder="Image Description" name="description" required>
+          
+          
       
-          <button type="submit" class="btn">Login</button>
+          <button type="submit" class="btn">Copy to clipboard</button>
           <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
       </div>`
