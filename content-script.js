@@ -9,7 +9,7 @@ function main() {
     return
   }
   const toolBar = toolBars[0]
-  if (toolBar===undefined){
+  if (toolBar === undefined) {
     return
   }
   console.log(toolBar)
@@ -20,7 +20,7 @@ function main() {
 }
 
 function openForm() {
-  if(document.getElementById("imageForm")==null){
+  if (document.getElementById("imageForm") == null) {
     formFactory()
   }
   document.getElementById("imageForm").style.display = "block";
@@ -31,7 +31,7 @@ function closeForm() {
 }
 
 function formFactory() {
-  if (document.getElementById("imageForm")){
+  if (document.getElementById("imageForm")) {
     return
   }
 
@@ -47,7 +47,6 @@ function formFactory() {
           <input type="text" placeholder="Image Description" name="description" required>
           
           
-      
           <button type="submit" class="btn">Copy to clipboard</button>
           <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
@@ -85,7 +84,7 @@ function addButtonClass(button) {
   }
 }
 
-function addStyleSheet(){
+function addStyleSheet() {
 
   let head = document.getElementsByTagName('HEAD')[0];
   let cssLinkElem = document.createElement('link');
