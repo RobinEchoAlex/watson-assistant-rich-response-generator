@@ -57,6 +57,9 @@ function formFactory() {
         </form>
       </div>`
   document.getElementsByClassName("RichTextEditorToolbar")[0].appendChild(popup)
+  //If directly writing onclick=ass() in html, a method not found error will be thrown
+  //Possibly the innerhtml is not linked to chrome extension vm
+  //But declare the onclick logic in main js body below will be fine
   document.getElementById("submitImageForm").onclick = function (){
     assembleImageResponse()
   }
