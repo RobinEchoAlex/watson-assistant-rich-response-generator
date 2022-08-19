@@ -2,6 +2,8 @@ main()
 
 function main() {
   formFactory()
+
+  //Find the toolbar which response-type buttons appended to
   const toolBars = document.getElementsByClassName("RichTextEditorToolbar")
   if (toolBars == null) {
     return
@@ -14,11 +16,15 @@ function main() {
   }
   console.log(toolBar)
 
+  //Add button to the toolbar
   const button = buttonCreator("image")
   toolBar.appendChild(button)
 
 }
 
+/**
+ * Open a form
+ */
 function openForm() {
   if (document.getElementById("imageForm") == null) {
     formFactory()
@@ -26,10 +32,16 @@ function openForm() {
   document.getElementById("imageForm").style.display = "block";
 }
 
+/**
+ * Close a form
+ */
 function closeForm() {
   document.getElementById("imageForm").style.display = "none";
 }
 
+/**
+ * Create form for user to enter the parameter for a response type
+ */
 function formFactory() {
   if (document.getElementById("imageForm")) {
     return
@@ -37,7 +49,7 @@ function formFactory() {
 
   const popup = document.createElement("div")
   popup.innerHTML = `
-
+<!--the form is initialised as hidden via style-->
 <div class="form-popup" id="imageForm" style="display: none">
         <form onsubmit="alert(title); false" class="form-container">
           <h1>Add image</h1>
@@ -69,6 +81,11 @@ function formFactory() {
   }
 }
 
+/**
+ * Create a button that is ready to be added to the toolbar
+ * @param id id of the button
+ * @returns {HTMLButtonElement} HTML of the button
+ */
 function buttonCreator(id) {
   const button = document.createElement("button")
   button.id = "RichTextEditor--toolbar--toolbar-button--" + id
@@ -82,6 +99,13 @@ function buttonCreator(id) {
   return button
 }
 
+/**
+ * Add class to the button to be added to the toolbar
+ * so it looks identical to existing buttons.
+ * each class represent a style carbon design system
+ * @see https://github.com/carbon-design-system/carbon
+ * @param button button to be added
+ */
 function addButtonClass(button) {
   const classList = ["ToolbarButton",
     "bx--btn",
@@ -99,6 +123,10 @@ function addButtonClass(button) {
   }
 }
 
+/**
+ * @deprecated
+ * Inject style sheet to the webpage
+ */
 function addStyleSheet() {
 
   let head = document.getElementsByTagName('HEAD')[0];
@@ -111,6 +139,9 @@ function addStyleSheet() {
   head.appendChild(cssLinkElem);
 }
 
+/**
+ * Assemble JSON text that represents an image response
+ */
 function assembleImageResponse() {
   let title = document.getElementById("titleInput").value
   let description = document.getElementById("descInput").value
@@ -133,10 +164,14 @@ function assembleImageResponse() {
   }
 
   let jsonStr = JSON.stringify(jsonObj)
-  copyToClipboard(jsonStr)
+  pasteToClipboard(jsonStr)
 }
 
-function copyToClipboard(jsonStr) {
+/**
+ * Paste text to Clipboard
+ * @param jsonStr string to be pasted
+ */
+function pasteToClipboard(jsonStr) {
   const type = "text/plain";
   const blob = new Blob([jsonStr], {type});
   const data = [new ClipboardItem({[type]: blob})];
