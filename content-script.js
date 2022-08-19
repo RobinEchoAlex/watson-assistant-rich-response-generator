@@ -60,11 +60,11 @@ function formFactory() {
   //If directly writing onclick=ass() in html, a method not found error will be thrown
   //Possibly the innerhtml is not linked to chrome extension vm
   //But declare the onclick logic in main js body below will be fine
-  document.getElementById("submitImageForm").onclick = function (){
+  document.getElementById("submitImageForm").onclick = function () {
     assembleImageResponse()
   }
 
-  document.getElementById("closeImageForm").onclick = function (){
+  document.getElementById("closeImageForm").onclick = function () {
     closeForm()
   }
 }
@@ -111,21 +111,21 @@ function addStyleSheet() {
   head.appendChild(cssLinkElem);
 }
 
-function assembleImageResponse(){
+function assembleImageResponse() {
   let title = document.getElementById("titleInput").value
   let description = document.getElementById("descInput").value
   let source = document.getElementById("urlInput").value
 
-  if (title==null || title.length===0 || description==null || description.length===0 || source==null || source.length===0){
+  if (title == null || title.length === 0 || description == null || description.length === 0 || source == null || source.length === 0) {
     console.error("When submit form, one or more field is not filled or the value cannot be fetched")
     return
   }
 
   let jsonObj = {
-    "generic":[
+    "generic": [
       {
         "response_type": "image",
-        "source":  source,
+        "source": source,
         "title": title,
         "description": description
       }
@@ -136,12 +136,12 @@ function assembleImageResponse(){
   copyToClipboard(jsonStr)
 }
 
-function copyToClipboard(jsonStr){
+function copyToClipboard(jsonStr) {
   const type = "text/plain";
-  const blob = new Blob([jsonStr], { type });
-  const data = [new ClipboardItem({ [type]: blob })];
+  const blob = new Blob([jsonStr], {type});
+  const data = [new ClipboardItem({[type]: blob})];
 
-  navigator.clipboard.write(data).then(function() {
+  navigator.clipboard.write(data).then(function () {
     console.log("Pasted to clipboard successfully.");
     Swal.fire({
       title: 'Error!',
@@ -149,7 +149,7 @@ function copyToClipboard(jsonStr){
       icon: 'error',
       confirmButtonText: 'Cool'
     })
-  }, function() {
+  }, function () {
     console.error("Fail pasting to clipboard.");
   });
 }
