@@ -36,18 +36,20 @@ function formFactory() {
   }
 
   const popup = document.createElement("div")
-  popup.innerHTML = `<div class="form-popup" id="imageForm" style="display: none">
-        <form action="/action_page.php" class="form-container">
+  popup.innerHTML = `
+
+<div class="form-popup" id="imageForm" style="display: none">
+        <form onsubmit="alert(title); false" class="form-container">
           <h1>Add image</h1>
       
           <label for="title"><b>Title</b></label>
-          <input type="text" placeholder="The Scream" name="title" required>
+          <input id="titleInput" type="text" placeholder="The Scream" name="title" required>
       
           <label for="description"><b>Description</b></label>
-          <input type="text" placeholder="created by Norwegian Edvard Munch" name="description" required>
+          <input id="descInput" type="text" placeholder="created by Norwegian Edvard Munch" name="description" required>
 
           <label for="url"><b>URL</b></label>
-          <input type="url" placeholder="https://example.com/image.jpg" name="url" required>
+          <input id="urlInput" type="url" placeholder="https://example.com/image.jpg" name="url" required>
           
           
           <button type="submit" class="btn">Copy to clipboard</button>
