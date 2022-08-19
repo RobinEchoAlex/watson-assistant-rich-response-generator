@@ -41,10 +41,10 @@ function formFactory() {
           <h1>Add image</h1>
       
           <label for="title"><b>Title</b></label>
-          <input type="text" placeholder="Image Title" name="title" required>
+          <input type="text" placeholder="The Scream" name="title" required>
       
           <label for="description"><b>Description</b></label>
-          <input type="text" placeholder="Image Description" name="description" required>
+          <input type="text" placeholder="created by Norwegian Edvard Munch" name="description" required>
 
           <label for="url"><b>URL</b></label>
           <input type="url" placeholder="https://example.com/image.jpg" name="url" required>
