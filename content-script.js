@@ -136,3 +136,21 @@ function assembleImageResponse(){
   copyToClipboard(jsonStr)
 }
 
+function copyToClipboard(jsonStr){
+  const type = "text/plain";
+  const blob = new Blob([jsonStr], { type });
+  const data = [new ClipboardItem({ [type]: blob })];
+
+  navigator.clipboard.write(data).then(function() {
+    console.log("Pasted to clipboard successfully.");
+    Swal.fire({
+      title: 'Error!',
+      text: 'Do you want to continue',
+      icon: 'error',
+      confirmButtonText: 'Cool'
+    })
+  }, function() {
+    console.error("Fail pasting to clipboard.");
+  });
+}
+

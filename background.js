@@ -7,6 +7,10 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
     console.log(tab)
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
+      files: ['sweetalert2.all.min.js']
+    });
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
       files: ['content-script.js']
     });
   }
