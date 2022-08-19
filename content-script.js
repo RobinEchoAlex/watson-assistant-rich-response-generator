@@ -45,6 +45,9 @@ function formFactory() {
       
           <label for="description"><b>Description</b></label>
           <input type="text" placeholder="Image Description" name="description" required>
+
+          <label for="url"><b>URL</b></label>
+          <input type="url" placeholder="https://example.com/image.jpg" name="url" required>
           
           
           <button type="submit" class="btn">Copy to clipboard</button>
