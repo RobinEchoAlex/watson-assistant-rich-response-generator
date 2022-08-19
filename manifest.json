@@ -9,5 +9,9 @@
   "permissions": [
     "activeTab","scripting"
   ],
-  "host_permissions": ["https://*/*"]
+  "host_permissions": ["https://*/*"],
+  "content_scripts": [ {
+    "css": [ "popupImage.css" ],
+    "matches": [ "https://*/*" ]
+  } ]
 }
