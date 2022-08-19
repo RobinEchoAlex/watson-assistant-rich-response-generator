@@ -112,6 +112,27 @@ function addStyleSheet() {
 }
 
 function assembleImageResponse(){
-  alert("v")
+  let title = document.getElementById("titleInput").value
+  let description = document.getElementById("descInput").value
+  let source = document.getElementById("urlInput").value
+
+  if (title==null || title.length===0 || description==null || description.length===0 || source==null || source.length===0){
+    console.error("When submit form, one or more field is not filled or the value cannot be fetched")
+    return
+  }
+
+  let jsonObj = {
+    "generic":[
+      {
+        "response_type": "image",
+        "source":  source,
+        "title": title,
+        "description": description
+      }
+    ]
+  }
+
+  let jsonStr = JSON.stringify(jsonObj)
+  copyToClipboard(jsonStr)
 }
 
